@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -34,12 +35,12 @@ public class OrderDetail {
     /**
      * 商品单价
      */
-    private String productPrice;
+    private BigDecimal productPrice;
 
     /**
      * 数量
      */
-    private String productQuantity;
+    private Integer productQuantity;
 
     /**
      * 商品小图
