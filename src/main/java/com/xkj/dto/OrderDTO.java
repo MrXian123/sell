@@ -1,8 +1,11 @@
 package com.xkj.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.xkj.entity.OrderDetail;
 import com.xkj.enums.OrderStatusEnum;
 import com.xkj.enums.PayStatusEnum;
+import com.xkj.util.serializer.DataToLongSerializer;
 import lombok.Data;
 
 import javax.persistence.Id;
@@ -14,6 +17,7 @@ import java.util.List;
  * Created by JIN on 2019/5/16.
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     /**订单Id*/
     private String orderId;
@@ -40,9 +44,11 @@ public class OrderDTO {
     private Integer payStatus;
 
     /** 创建时间*/
+    @JsonSerialize(using = DataToLongSerializer.class)
     private Date createTime;
 
     /** 更新时间*/
+    @JsonSerialize(using = DataToLongSerializer.class)
     private Date updateTime;
 
     List<OrderDetail> orderDetailList;
